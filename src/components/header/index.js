@@ -46,18 +46,19 @@ function HeaderComponent({ user }) {
   ]);
 
   React.useEffect(() => {
-    setUser(returUser());
-
-    setPages([
-      {
-        label: "Produtos",
-        link: "/",
-      },
-      {
-        label: "Cad Produtos",
-        link: "/admin/create",
-      },
-    ]);
+    const user = returUser();
+    if (user) {
+      setPages([
+        {
+          label: "Produtos",
+          link: "/",
+        },
+        {
+          label: "Cad Produtos",
+          link: "/admin/create",
+        },
+      ]);
+    }
   }, []);
 
   const handleOpenNavMenu = (event) => {

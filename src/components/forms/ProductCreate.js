@@ -22,8 +22,6 @@ export default function ProductCad({ item }) {
   }
 
   const HandleSalveItem = async () => {
-    console.log(nome)
-
     const user =
       localStorage.getItem("user") && JSON.parse(localStorage.getItem("user"));
     if (!nome) {
@@ -34,13 +32,11 @@ export default function ProductCad({ item }) {
     }
 
     if (preco === "0.00") {
-      console.log(preco)
       setError("Preço do Produto é Obrigatorio");
       return;
     } else {
       setError();
     }
-
     const res = await productsService.create({
       preco,
       descricao,

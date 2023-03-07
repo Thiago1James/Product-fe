@@ -30,7 +30,6 @@ function ProductList() {
     if (serchTerm) {
       (async () => {
         const response = await productsService.findByName(serchTerm.toLowerCase());
-        console.log(response)
         setProduct(response?.row);
         setCount(Number(response.Total.count));
       })();
