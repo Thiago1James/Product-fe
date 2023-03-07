@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Global from "./assets/styles/global";
+import HeaderComponent from "./components/header";
+import { AuthProvider } from "./contexts/Auth";
+import Router from "./Routes";
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AuthProvider>
+        <Global />
+        <HeaderComponent user={user} setUser={setUser} />
+        <Router user={user} setUser={setUser} />
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
